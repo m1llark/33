@@ -12,6 +12,7 @@ import web.service.UserService;
 
 
 @Service
+@Transactional
 public class UserServiceImp implements UserService {
 
     private UserDao userDao;
@@ -20,6 +21,8 @@ public class UserServiceImp implements UserService {
     public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
     }
+
+
     @Override
     public void addUser(User user) {
         userDao.addUser(user);
@@ -36,11 +39,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional(readOnly=true)
     public User getUserById(int id) {
         return userDao.getUserById(id);
     }
 
     @Override
+    @Transactional(readOnly=true)
     public List<User> listUsers() {
         return userDao.listUsers();
     }
