@@ -4,7 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 
 import java.util.List;
-@Transactional
+
 public interface UserService {
     void addUser(User user);
     void updateUser(User user);
