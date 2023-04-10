@@ -32,12 +32,12 @@ public class UserDaoImp implements UserDao{
         User user = getUserById(id);
         entityManager.remove(user);
     }
-    @Transactional
+    @Transactional(readOnly=true)
     @Override
     public User getUserById(int id) {
         return entityManager.find(User.class, id);
     }
-    @Transactional
+    @Transactional(readOnly=true)
     @Override
     public List<User> listUsers() {
         return entityManager.createQuery("select u from User u",User.class).getResultList();
